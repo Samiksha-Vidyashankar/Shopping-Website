@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+      }
+
+      nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        display: inline;
+        margin-right: 10px;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      section h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .product {
+        display: inline-block;
+        vertical-align: top;
+        width: 200px;
+        margin-right: 20px;
+      }
+
+      .product img {
+        width: 100%;
+        height: auto;
+      }
+
+      .product h3 {
+        font-size: 16px;
+        margin: 5px 0;
+      }
+
+      .product p {
+        font-size: 14px;
+        color: #888;
+      }
+
+      .product button {
+        padding: 5px 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .top {
+        color: #fff;
+      }
+    </style>
+    <title>Online Shopping Website</title>
+  </head>
+  <body>
+    <header>
+      <h1>Online Shop</h1>
+      <nav>
+        <ul>
+          <li><a href="/Webdev Project/index.html">Home</a></li>
+          <li><a href="/Webdev Project/about.html">About</a></li>
+          <li><a href="/Webdev Project/login.html">Login</a></li>
+          <li><a href="/Webdev Project/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2><u>Featured Products</u></h2>
+        <br />
+        <div class="product">
+          <h3>Wrist Watch</h3>
+          <img src="/Webdev Project/images/wrist watch.jpeg" alt="Product 1" />
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta
+            veritatis repellendus accusantium dolorum, natus odio voluptatem
+            earum maxime odit dolor.
+          </p>
+          <h5>Rs. 499/-</h5>
+          <button onclick="addToCart('Wrist Watch', 499)">Add to Cart</button>
+        </div>
+
+        <br /><br /><br /><br />
+
+        <div class="product">
+          <h3>Sports Shoes</h3>
+          <img src="/Webdev Project/images/sports shoes.jpeg" alt="Product 2" />
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore
+            doloremque et obcaecati sint pariatur provident ducimus delectus
+            dignissimos quasi adipisci.
+          </p>
+          <h5>Rs. 2,999/-</h5>
+          <button onclick="addToCart('Sports Shoes', 2999)">Add to Cart</button>
+        </div>
+
+        <br /><br /><br /><br />
+
+        <div class="product">
+          <h3>Hand Bag</h3>
+          <img src="/Webdev Project/images/hand bag.jpeg" alt="Product 3" />
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
+            pariatur, autem quaerat sint et voluptatum dolor similique
+            necessitatibus. Magni, earum.
+          </p>
+          <h5>Rs. 999/-</h5>
+          <button onclick="addToCart('Hand Bag', 999)">Add to Cart</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Online Shop. All rights reserved.</p>
+      <a href="#top" class="top">Go Back to Top</a>
+    </footer>
+
+    <script>
+      let cartItems = [];
+      let totalPrice = 0;
+
+      function addToCart(productName, price) {
+        cartItems.push({ name: productName, price: price });
+        totalPrice += price;
+
+        console.log("Added to cart: " + productName);
+        console.log("Total Price: Rs. " + totalPrice);
+
+        updateCartDisplay();
+      }
+
+      function updateCartDisplay() {
+        const cartDisplay = document.getElementById("cart-display");
+        const totalDisplay = document.getElementById("total-display");
+
+        cartDisplay.innerHTML = "";
+
+        cartItems.forEach((item) => {
+          const cartItemElement = document.createElement("p");
+          cartItemElement.innerText = `${item.name} - Rs. ${item.price}/-`;
+          cartDisplay.appendChild(cartItemElement);
+        });
+
+        totalDisplay.innerText = `Total Price: Rs. ${totalPrice}/-`;
+      }
+    </script>
+  </body>
+</html>
